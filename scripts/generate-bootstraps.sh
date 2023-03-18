@@ -469,6 +469,18 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 	pull_package net-tools
 	pull_package patch
 	pull_package unzip
+	pull_package zstd
+
+	# Needed for basic installation of build tools in AndroidIDE
+	# Already included in bootstrap: tar, curl
+	pull_package wget
+	pull_package jq
+
+	# Necessary packages for AndroidIDE
+	pull_package androidide-tools
+
+	# Error in AndroidIDE if these are not included
+	pull_package brotli
 
 	# Handle additional packages.
 	for add_pkg in "${ADDITIONAL_PACKAGES[@]}"; do
