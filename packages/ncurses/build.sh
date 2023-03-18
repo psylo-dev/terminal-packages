@@ -9,12 +9,12 @@ TERMUX_PKG_VERSION=(6.4
 		    0.11.0)
 TERMUX_PKG_REVISION=2
 TERMUX_PKG_SRCURL=(https://ftp.gnu.org/gnu/ncurses/ncurses-${TERMUX_PKG_VERSION[0]}.tar.gz
-		   https://fossies.org/linux/misc/rxvt-unicode-${TERMUX_PKG_VERSION[1]}.tar.bz2
+		   https://github.com/exg/rxvt-unicode/archive/refs/tags/rxvt-unicode-${TERMUX_PKG_VERSION[1]}.tar.gz
 		   https://github.com/thestinger/termite/archive/v${TERMUX_PKG_VERSION[2]}.tar.gz
 		   https://github.com/kovidgoyal/kitty/archive/v${TERMUX_PKG_VERSION[3]}.tar.gz
 		   https://github.com/alacritty/alacritty/archive/refs/tags/v${TERMUX_PKG_VERSION[4]}.tar.gz)
 TERMUX_PKG_SHA256=(6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
-		   aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8
+		   7e759ebee353bfca33fd4d88605dcb10f1911d0b759fc80d0c48cddce71ba08d
 		   3ae9ebef28aad081c6c11351f086776e2fd9547563b2f900732b41c376bec05a
 		   7a1b444f1cc10e16ee0f20a804c0f80b52417eeabf60d9f25e37ef192503ba26
 		   0fb3370c662f5b87d1b9a487aef999195212b192e08f6f68a572fed8fd637e07)
@@ -101,7 +101,7 @@ termux_step_post_make_install() {
 	cp $TERMUX_PKG_TMPDIR/full-terminfo/v/{vt52,vt100,vt102} $TI/v/
 	cp $TERMUX_PKG_TMPDIR/full-terminfo/x/xterm{,-color,-new,-16color,-256color,+256color} $TI/x/
 
-	tic -x -o $TI $TERMUX_PKG_SRCDIR/rxvt-unicode-${TERMUX_PKG_VERSION[1]}/doc/etc/rxvt-unicode.terminfo
+	tic -x -o $TI $TERMUX_PKG_SRCDIR/rxvt-unicode-rxvt-unicode-${TERMUX_PKG_VERSION[1]}/doc/etc/rxvt-unicode.terminfo
 	tic -x -o $TI $TERMUX_PKG_SRCDIR/termite-${TERMUX_PKG_VERSION[2]}/termite.terminfo
 	tic -x -o $TI $TERMUX_PKG_SRCDIR/kitty-${TERMUX_PKG_VERSION[3]}/terminfo/kitty.terminfo
 	tic -x -o $TI $TERMUX_PKG_SRCDIR/alacritty-${TERMUX_PKG_VERSION[4]}/extra/alacritty.info
