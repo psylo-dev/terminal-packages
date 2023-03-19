@@ -20,6 +20,13 @@ termux_step_post_get_source() {
 	fi
 }
 
+termux_step_pre_configure() {
+	mv $TERMUX_PREFIX/lib/libz.a $TERMUX_PREFIX/lib/libz.a.tmp
+	mv $TERMUX_PREFIX/lib/libz.so $TERMUX_PREFIX/lib/libz.so.tmp
+	mv $TERMUX_PREFIX/lib/libz.so.1 $TERMUX_PREFIX/lib/libz.so.1.tmp
+	mv $TERMUX_PREFIX/lib/libz.so.1.2.13 $TERMUX_PREFIX/lib/libz.so.1.2.13.tmp
+}
+
 termux_step_make_install() {
 	termux_setup_rust
 	termux_setup_cargo_c
@@ -59,4 +66,9 @@ termux_step_make_install() {
 	ln -s librav1e.so.$TERMUX_PKG_VERSION \
 		$TERMUX_PREFIX/lib/librav1e.so.${TERMUX_PKG_VERSION%%.*}
 	ln -s librav1e.so.$TERMUX_PKG_VERSION $TERMUX_PREFIX/lib/librav1e.so
+
+	mv $TERMUX_PREFIX/lib/libz.a.tmp $TERMUX_PREFIX/lib/libz.a
+	mv $TERMUX_PREFIX/lib/libz.so.tmp $TERMUX_PREFIX/lib/libz.so
+        mv $TERMUX_PREFIX/lib/libz.so.1.tmp $TERMUX_PREFIX/lib/libz.so.1
+        mv $TERMUX_PREFIX/lib/libz.so.1.2.13.tmp $TERMUX_PREFIX/lib/libz.so.1.2.13
 }
