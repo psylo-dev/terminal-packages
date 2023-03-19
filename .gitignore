@@ -17,6 +17,7 @@ scripts/*.log
 /debs/
 /output/
 /output-arm/
+/apt-repo/
 
 # Built bootstrap files
 /bootstrap-*.zip
