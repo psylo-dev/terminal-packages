@@ -2,9 +2,9 @@ TERMUX_PKG_HOMEPAGE=https://github.com/JohnnyMorganz/StyLua
 TERMUX_PKG_DESCRIPTION="An opinionated Lua code formatter"
 TERMUX_PKG_LICENSE="MPL-2.0"
 TERMUX_PKG_MAINTAINER="@shadmansaleh"
-TERMUX_PKG_VERSION="0.17.1"
+TERMUX_PKG_VERSION="0.18.1"
 TERMUX_PKG_SRCURL=https://github.com/JohnnyMorganz/StyLua/archive/refs/tags/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=94d421033a41d7030bfec5cafafd16e52951b08685f4a908087cbcbb8fea4073
+TERMUX_PKG_SHA256=e06bd0e2befcfebfa312930f282acdc6e2cffff7c1cabce648be4d88e7e5f7c0
 TERMUX_PKG_AUTO_UPDATE=true
 TERMUX_PKG_BUILD_IN_SRC=true
 

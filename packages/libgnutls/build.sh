@@ -4,6 +4,7 @@ TERMUX_PKG_LICENSE="LGPL-2.1, GPL-3.0"
 TERMUX_PKG_MAINTAINER="@termux"
 _MAJOR_VERSION=3.8
 TERMUX_PKG_VERSION=${_MAJOR_VERSION}.0
+TERMUX_PKG_REVISION=1
 TERMUX_PKG_SRCURL=https://www.gnupg.org/ftp/gcrypt/gnutls/v${_MAJOR_VERSION}/gnutls-${TERMUX_PKG_VERSION}.tar.xz
 TERMUX_PKG_SHA256=0ea0d11a1660a1e63f960f157b197abe6d0c8cb3255be24e1fb3815930b9bdc5
 TERMUX_PKG_DEPENDS="brotli, libc++, libgmp, libnettle, ca-certificates, libidn2, libunistring, unbound"
@@ -20,6 +21,7 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 --with-unbound-root-key-file=$TERMUX_PREFIX/etc/unbound/root.key
 --with-included-libtasn1
 --enable-local-libopts
+--without-brotli
 --without-p11-kit
 --disable-guile
 --disable-doc
