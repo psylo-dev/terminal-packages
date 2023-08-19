@@ -14,7 +14,7 @@ TERMUX_PKG_SRCURL=(https://ftp.gnu.org/gnu/ncurses/ncurses-${_MAIN_VERSION}.tar.
 		   https://github.com/kovidgoyal/kitty/archive/v${TERMUX_PKG_VERSION[3]}.tar.gz
 		   https://github.com/alacritty/alacritty/archive/refs/tags/v${TERMUX_PKG_VERSION[4]}.tar.gz)
 TERMUX_PKG_SHA256=(6931283d9ac87c5073f30b6290c4c75f21632bb4fc3603ac8100812bed248159
-		   7e759ebee353bfca33fd4d88605dcb10f1911d0b759fc80d0c48cddce71ba08d
+		   aaa13fcbc149fe0f3f391f933279580f74a96fd312d6ed06b8ff03c2d46672e8
 		   3ae9ebef28aad081c6c11351f086776e2fd9547563b2f900732b41c376bec05a
 		   7a1b444f1cc10e16ee0f20a804c0f80b52417eeabf60d9f25e37ef192503ba26
 		   0fb3370c662f5b87d1b9a487aef999195212b192e08f6f68a572fed8fd637e07)
