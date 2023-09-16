@@ -3,8 +3,8 @@ TERMUX_PKG_DESCRIPTION="Java development kit and runtime"
 TERMUX_PKG_LICENSE="GPL-2.0"
 TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION=21.0
-TERMUX_PKG_SRCURL=https://github.com/itsaky/jdk21-android/archive/3328b531eb9762acda2b3bd334eb3b25a7214d72.tar.gz
-TERMUX_PKG_SHA256=f201a11a5cff9e7efe8eff93e84c835a3c7ead3827e55adb54d85a9dc25ffbf0
+TERMUX_PKG_SRCURL=https://github.com/itsaky/jdk21-android/archive/f537b8ffaba02cfe130d24ad13e298a97f5fdb58.tar.gz
+TERMUX_PKG_SHA256=702ce54ff171117e106a85f58f5c52bf52e2aff2f8fbf417f0ff885cfc745215
 TERMUX_PKG_DEPENDS="libiconv, libjpeg-turbo, zlib"
 TERMUX_PKG_BUILD_DEPENDS="cups, libandroid-spawn, xorgproto"
 # openjdk-21-x is recommended because X11 separation is still very experimental.
