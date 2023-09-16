@@ -100,7 +100,7 @@ termux_step_configure() {
 
 termux_step_make() {
     cd build/linux-${TERMUX_ARCH/i686/x86}-server-release
-    make JOBS=$(nproc --all) images
+    JAVA_WARNINGS_ARE_ERRORS="" make JOBS=$(nproc --all) images
 }
 
 termux_step_make_install() {
