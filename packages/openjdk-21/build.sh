@@ -22,7 +22,6 @@ termux_step_post_get_source() {
     termux_download "$boot_jdk_url" "$boot_jdk_archive_path" "$boot_jdk_sha256"
     echo "Extracting Boot JDK..."
     
-    echo "$boot_jdk_archive_path"
     tar xf $boot_jdk_archive_path -C $TERMUX_PKG_CACHEDIR
 }
 
