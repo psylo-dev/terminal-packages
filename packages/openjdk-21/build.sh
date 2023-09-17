@@ -71,7 +71,7 @@ termux_step_configure() {
     --openjdk-target=$TERMUX_HOST_PLATFORM \
     --with-extra-cflags="$CFLAGS $CPPFLAGS -DLE_STANDALONE -DANDROID -D__TERMUX__=1" \
     --with-extra-cxxflags="$CXXFLAGS $CPPFLAGS -DLE_STANDALONE -DANDROID -D__TERMUX__=1" \
-    --with-extra-ldflags="${jdk_ldflags} -Wl,--as-needed -landroid-shmem" \
+    --with-extra-ldflags="${jdk_ldflags} -Wl,--as-needed -landroid-shmem -landroid-spawn" \
 	--with-boot-jdk="${TERMUX_PKG_CACHEDIR}/jdk-21" \
     --disable-precompiled-headers \
     --disable-warnings-as-errors \
