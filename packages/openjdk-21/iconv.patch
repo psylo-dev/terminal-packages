@@ -1,13 +1,24 @@
-From e0d9711e3642f75c9e34c129c38a019a2337fca0 Mon Sep 17 00:00:00 2001
-From: Akash Yadav <itsaky01@gmail.com>
-Date: Sat, 16 Sep 2023 21:18:49 +0530
-Subject: [PATCH] fix: update patch for libiconv
-
-Signed-off-by: Akash Yadav <itsaky01@gmail.com>
----
- make/modules/jdk.jdwp.agent/Lib.gmk | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
+diff --git a/make/modules/java.instrument/Lib.gmk b/make/modules/java.instrument/Lib.gmk
+index c9342526307..73a937854d4 100644
+--- a/make/modules/java.instrument/Lib.gmk
++++ b/make/modules/java.instrument/Lib.gmk
+@@ -36,7 +36,6 @@ endif
+ $(eval $(call SetupJdkLibrary, BUILD_LIBINSTRUMENT, \
+     NAME := instrument, \
+     OPTIMIZATION := LOW, \
+-    EXTRA_SRC := java.base:libtinyiconv, \
+     CFLAGS := $(CFLAGS_JDKLIB) $(LIBINSTRUMENT_CFLAGS), \
+     CFLAGS_debug := -DJPLIS_LOGGING, \
+     CFLAGS_release := -DNO_JPLIS_LOGGING, \
+@@ -50,7 +49,7 @@ $(eval $(call SetupJdkLibrary, BUILD_LIBINSTRUMENT, \
+     LDFLAGS_aix := -L$(SUPPORT_OUTPUTDIR)/native/java.base, \
+     LIBS := $(JDKLIB_LIBS), \
+     LIBS_unix := -ljava -ljvm $(LIBZ_LIBS), \
+-    LIBS_linux := -ljli $(LIBDL), \
++    LIBS_linux := -ljli -liconv $(LIBDL), \
+     LIBS_aix := -liconv -ljli_static $(LIBDL), \
+     LIBS_macosx := -ljli -liconv -framework Cocoa -framework Security \
+         -framework ApplicationServices, \
 diff --git a/make/modules/jdk.jdwp.agent/Lib.gmk b/make/modules/jdk.jdwp.agent/Lib.gmk
 index f6af6318150..e12aec7e2ac 100644
 --- a/make/modules/jdk.jdwp.agent/Lib.gmk
@@ -25,6 +36,3 @@ index f6af6318150..e12aec7e2ac 100644
      LIBS_macosx := -liconv, \
      LIBS_aix := -liconv, \
  ))
--- 
-2.34.1
-
