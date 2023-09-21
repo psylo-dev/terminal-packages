@@ -7,5 +7,5 @@ for pck in $(<packages.txt); do
     echo "Skipping $pck as it is already built"
     continue
   fi
-  ./build-package.sh -a aarch64 -o -I output-aarch64 $pck
+  ./build-package.sh -a aarch64 -o output-aarch64 -I $pck
 done
