@@ -13,7 +13,7 @@ termux_step_make_install() {
 	mkdir -p $GPG_SHARE_DIR
 
 	# Maintainer-specific keys.
-        install -Dm600 $TERMUX_PKG_BUILDER_DIR/itsaky.gpg $GPG_SHARE_DIR
+    install -Dm600 $TERMUX_PKG_BUILDER_DIR/itsaky.gpg $GPG_SHARE_DIR
 	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/agnostic-apollo.gpg $GPG_SHARE_DIR
 	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/grimler.gpg $GPG_SHARE_DIR
 	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/kcubeterm.gpg $GPG_SHARE_DIR
@@ -22,7 +22,7 @@ termux_step_make_install() {
 	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/2096779623.gpg $GPG_SHARE_DIR
 
 	# Key for automatic builds (via CI).
-	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/termux-autobuilds.gpg $GPG_SHARE_DIR
+	install -Dm600 $TERMUX_PKG_BUILDER_DIR/androidide-autobuilds.gpg $GPG_SHARE_DIR
 
 	# Key for pacman package manager.
 	#install -Dm600 $TERMUX_PKG_BUILDER_DIR/termux-pacman.gpg $GPG_SHARE_DIR

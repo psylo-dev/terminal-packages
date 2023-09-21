@@ -531,10 +531,10 @@ if [ "${TERMUX_INSTALL_DEPS-false}" = "true" ] || [ "${TERMUX_PACKAGE_LIBRARY-bi
 		gpg --import "$TERMUX_SCRIPTDIR/packages/termux-keyring/itsaky.gpg"
 		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key C81536F00D0A838AEB7DBBE2521D9A6E171FFD55
 	}
-#	gpg --list-keys CC72CF8BA7DBFA0182877D045A897D96E57CF20C > /dev/null 2>&1 || {
-#		gpg --import "$TERMUX_SCRIPTDIR/packages/termux-keyring/termux-autobuilds.gpg"
-#		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key CC72CF8BA7DBFA0182877D045A897D96E57CF20C
-#	}
+	gpg --list-keys B62359F8463F607E14A0DAD1B2F972E5F19479C9 > /dev/null 2>&1 || {
+		gpg --import "$TERMUX_SCRIPTDIR/packages/termux-keyring/androidide-autobuilds.gpg"
+		gpg --no-tty --command-file <(echo -e "trust\n5\ny")  --edit-key B62359F8463F607E14A0DAD1B2F972E5F19479C9
+	}
 fi
 
 for ((i=0; i<${#PACKAGE_LIST[@]}; i++)); do
