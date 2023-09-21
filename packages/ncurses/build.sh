@@ -100,7 +100,7 @@ termux_step_post_get_source() {
 		# "https://invisible-island.net/archives/ncurses/${_MAIN_VERSION}/${_patch_filename}"
 		# which is not suitable for CI due to bad responsiveness.
 		termux_download \
-			"https://ftp-osl.osuosl.org/pub/gentoo/distfiles/${_patch_filename}" \
+			"https://stuff.mit.edu/afs/sipb/project/ncurses/patches/${_patch_filename}" \
 			"$TERMUX_PKG_CACHEDIR/${_patch_filename}" \
 			"${_patch_sha256}"
 		echo "Applying ${_patch_filename}"
