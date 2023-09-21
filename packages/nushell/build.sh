@@ -2,9 +2,9 @@ TERMUX_PKG_HOMEPAGE=https://www.nushell.sh
 TERMUX_PKG_DESCRIPTION="A new type of shell operating on structured data"
 TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION="0.83.1"
+TERMUX_PKG_VERSION="0.85.0"
 TERMUX_PKG_SRCURL=https://github.com/nushell/nushell/archive/$TERMUX_PKG_VERSION.tar.gz
-TERMUX_PKG_SHA256=a08baef4e487cf200b14cd4a8555110106a947ac439ad8e2759f5ec52c8f9656
+TERMUX_PKG_SHA256=19e327b23fc08b519f5077e33908afa7967d98139a516c180d029b3ca0618da3
 TERMUX_PKG_AUTO_UPDATE=true
 TERMUX_PKG_DEPENDS="openssl, zlib"
 TERMUX_PKG_BUILD_IN_SRC=true
@@ -33,12 +33,7 @@ termux_step_pre_configure() {
 	: "${CARGO_HOME:=$HOME/.cargo}"
 	export CARGO_HOME
 
-	rm -rf $CARGO_HOME/registry/src/*/pwd-*
 	cargo fetch --target "${CARGO_TARGET_NAME}"
-
-	for d in $CARGO_HOME/registry/src/*/pwd-*; do
-		patch --silent -p1 -d ${d} < $TERMUX_PKG_BUILDER_DIR/crates-pwd-for-android.diff || :
-	done
 
 	mv $TERMUX_PREFIX/lib/libz.so.1{,.tmp}
 	mv $TERMUX_PREFIX/lib/libz.so{,.tmp}
