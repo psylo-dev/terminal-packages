@@ -9,4 +9,4 @@ opt/openjdk/lib/libsplashscreen.so
 "
 TERMUX_SUBPKG_DESCRIPTION="Portion of openjdk-21 requiring X11 functionality"
 TERMUX_SUBPKG_DEPENDS="fontconfig, freetype, giflib, libandroid-shmem, libpng, libx11, libxext, libxi, libxrandr, libxrender, libxt, libxtst"
-TERMUX_PKG_BREAKS="openjdk-17-x"
+TERMUX_SUBPKG_REPLACES="openjdk-17-x"
