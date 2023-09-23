@@ -113,7 +113,8 @@ termux_step_create_debscripts() {
 		cat <<- EOF > ./postinst
 		#!$TERMUX_PREFIX/bin/sh
 
-		BIN_DIR="$TERMUX_PREFIX/opt/openjdk-${TERMUX_PKG_VERSION}/bin"
+		JAVA_HOME="$TERMUX_PREFIX/opt/openjdk-${TERMUX_PKG_VERSION}"
+		BIN_DIR="\$JAVA_HOME/bin"
 		for bin_file in "\$BIN_DIR"/*; do
 			bin_name=\$(basename \$bin_file)
 			exists=\$($TERMUX_PREFIX/bin/update-alternatives --query "\$bin_name" 2>/dev/null | grep "Alternative: \$bin_file" || true)
@@ -122,12 +123,14 @@ termux_step_create_debscripts() {
 			fi
 			$TERMUX_PREFIX/bin/update-alternatives --set "\$bin_name" "\$bin_file" > /dev/null 2>&1
 		done
+
+		ln -sf \$JAVA_HOME $TERMUX_PREFIX/opt/openjdk
 		EOF
 
 		cat <<- EOF > ./prerm
 		#!$TERMUX_PREFIX/bin/sh
 
-		BIN_DIR="$TERMUX_PREFIX/opt/openjdk-${TERMUX_PKG_VERSION}/bin"
+		BIN_DIR="\$JAVA_HOME/bin"
 		for bin_file in "\$BIN_DIR"/*; do
 			bin_name=\$(basename "\$bin_file")
 			$TERMUX_PREFIX/bin/update-alternatives --remove "\$bin_name" "\$bin_file" > /dev/null 2>&1
