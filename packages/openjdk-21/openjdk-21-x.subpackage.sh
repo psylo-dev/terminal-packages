@@ -1,11 +1,11 @@
 TERMUX_SUBPKG_INCLUDE="
-opt/openjdk/include/jawt.h
-opt/openjdk/include/linux/jawt_md.h
-opt/openjdk/jmods/java.desktop.jmod
-opt/openjdk/lib/libawt_xawt.so
-opt/openjdk/lib/libfontmanager.so
-opt/openjdk/lib/libjawt.so
-opt/openjdk/lib/libsplashscreen.so
+opt/openjdk-${TERMUX_PKG_VERSION}/include/jawt.h
+opt/openjdk-${TERMUX_PKG_VERSION}/include/linux/jawt_md.h
+opt/openjdk-${TERMUX_PKG_VERSION}/jmods/java.desktop.jmod
+opt/openjdk-${TERMUX_PKG_VERSION}/lib/libawt_xawt.so
+opt/openjdk-${TERMUX_PKG_VERSION}/lib/libfontmanager.so
+opt/openjdk-${TERMUX_PKG_VERSION}/lib/libjawt.so
+opt/openjdk-${TERMUX_PKG_VERSION}/lib/libsplashscreen.so
 "
 TERMUX_SUBPKG_DESCRIPTION="Portion of openjdk-21 requiring X11 functionality"
 TERMUX_SUBPKG_DEPENDS="fontconfig, freetype, giflib, libandroid-shmem, libpng, libx11, libxext, libxi, libxrandr, libxrender, libxt, libxtst"
