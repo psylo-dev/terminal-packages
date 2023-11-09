@@ -5,11 +5,5 @@
     "distribution": "stable",
     "component": "main",
     "url": "https://packages.androidide.com/apt/termux-main"
-  },
-  "x11-packages": {
-    "name": "termux-x11",
-    "distribution": "x11",
-    "component": "main",
-    "url": "https://packages.androidide.com/apt/termux-x11"
   }
 }
