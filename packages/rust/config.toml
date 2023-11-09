@@ -1,16 +1,16 @@
 # See documentation at
-# https://github.com/rust-lang/rust/blob/master/config.toml.example
+# https://github.com/rust-lang/rust/blob/master/config.example.toml
 
 [llvm]
 link-shared = true
 
 [build]
 host = ["@triple@"]
-target = ["@triple@", "wasm32-unknown-unknown"]
+target = ["@triple@", "wasm32-unknown-unknown", "wasm32-wasi"]
 rustc = "@RUSTC@"
 cargo = "@CARGO@"
 
-python = "python2.7"
+python = "python3"
 extended = true
 sanitizers = false
 
@@ -30,13 +30,16 @@ channel = "stable"
 rpath = false
 
 [target.x86_64-unknown-linux-gnu]
-llvm-config = "/usr/bin/llvm-config-14"
+llvm-config = "/usr/bin/llvm-config-15"
 
 [target.@triple@]
 android-ndk = "@TERMUX_STANDALONE_TOOLCHAIN@"
 llvm-config = "@TERMUX_PREFIX@/bin/llvm-config"
 ar = "llvm-ar"
 profiler = true
+
+[target.wasm32-wasi]
+wasi-root = "@TERMUX_PREFIX@/share/wasi-sysroot"
 
 [dist]
 src-tarball = false

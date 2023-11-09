@@ -2,9 +2,9 @@ TERMUX_PKG_HOMEPAGE=https://chezmoi.io
 TERMUX_PKG_DESCRIPTION="Manage your dotfiles across multiple machines"
 TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="Henrik Grimler @Grimler91"
-TERMUX_PKG_VERSION="2.40.0"
+TERMUX_PKG_VERSION="2.40.4"
 TERMUX_PKG_SRCURL=https://github.com/twpayne/chezmoi/archive/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=257d262667c46f10f6db9a9203072e446c2e8fa7e38b8a15fdb7aa2ff4eb9dbd
+TERMUX_PKG_SHA256=05113befe5e76f31bdc23f8a1982349cbaa5cfc11bf32523127d16a388aada27
 TERMUX_PKG_AUTO_UPDATE=true
 
 termux_step_make() {

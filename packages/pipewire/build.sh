@@ -3,9 +3,10 @@ TERMUX_PKG_DESCRIPTION="A server and user space API to deal with multimedia pipe
 TERMUX_PKG_LICENSE="MIT, LGPL-2.1, LGPL-3.0, GPL-2.0"
 TERMUX_PKG_LICENSE_FILE="COPYING, LICENSE"
 TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION=0.3.72
+TERMUX_PKG_VERSION="0.3.84"
 TERMUX_PKG_SRCURL="https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/${TERMUX_PKG_VERSION}/pipewire-${TERMUX_PKG_VERSION}.tar.bz2"
-TERMUX_PKG_SHA256=bef4ab15f3babd2c77865c9aaceb73b501d48bd5228edb5181fe63d0c756752b
+TERMUX_PKG_SHA256=0b32bff5039b5072b7ffe8c8a3ae2542510036a8cc5941570662b14a7ef96734
+TERMUX_PKG_AUTO_UPDATE=true
 TERMUX_PKG_DEPENDS="ffmpeg, glib, libc++, liblua54, libopus, libsndfile, libwebrtc-audio-processing, lilv, ncurses, openssl, pulseaudio, readline"
 
 # 'media-session' session-managers is disabled as it requires alsa.
@@ -27,6 +28,18 @@ TERMUX_PKG_EXTRA_CONFIGURE_ARGS="
 "
 
 termux_step_pre_configure() {
+	local _WRAPPER_BIN="${TERMUX_PKG_BUILDDIR}/_wrapper/bin"
+	mkdir -p "${_WRAPPER_BIN}"
+	if [[ "${TERMUX_ON_DEVICE_BUILD}" == "false" ]]; then
+		sed "s|^export PKG_CONFIG_LIBDIR=|export PKG_CONFIG_LIBDIR=${TERMUX_PREFIX}/opt/glib/cross/lib/x86_64-linux-gnu/pkgconfig:|" \
+			"${TERMUX_STANDALONE_TOOLCHAIN}/bin/pkg-config" \
+			> "${_WRAPPER_BIN}/pkg-config"
+		chmod +x "${_WRAPPER_BIN}/pkg-config"
+		export PKG_CONFIG="${_WRAPPER_BIN}/pkg-config"
+	fi
+	export PATH="${_WRAPPER_BIN}:${PATH}"
+
+	sed -i "s/'-Werror=strict-prototypes',//" ${TERMUX_PKG_SRCDIR}/meson.build
 	CFLAGS+=" -Dindex=strchr -Drindex=strrchr"
 	sed "s|@TERMUX_PKG_BUILDER_DIR@|${TERMUX_PKG_BUILDER_DIR}|g" \
 		"${TERMUX_PKG_BUILDER_DIR}"/reallocarray.diff | patch -p1
