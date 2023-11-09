@@ -16,7 +16,7 @@ BOOTSTRAP_ANDROID10_COMPATIBLE=false
 # By default, bootstrap archives will be built for all architectures
 # supported by Termux application.
 # Override with option '--architectures'.
-TERMUX_ARCHITECTURES=("aarch64" "arm")
+TERMUX_ARCHITECTURES=("aarch64" "arm" "x86_64")
 
 # The supported termux package managers.
 TERMUX_PACKAGE_MANAGERS=("apt")
