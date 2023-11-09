@@ -2,9 +2,10 @@ TERMUX_PKG_HOMEPAGE=https://vale.sh
 TERMUX_PKG_DESCRIPTION="A syntax-aware linter for prose built with speed and extensibility in mind"
 TERMUX_PKG_LICENSE="MIT"
 TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION="2.29.1"
+TERMUX_PKG_VERSION="2.29.6"
 TERMUX_PKG_SRCURL=https://github.com/errata-ai/vale/archive/refs/tags/v${TERMUX_PKG_VERSION}.tar.gz
-TERMUX_PKG_SHA256=0d27ff83541d5a2cfabad46fcee95691c3691c79e6c595486ac48eb6ce9fbde4
+TERMUX_PKG_SHA256=6ac15dd6defed7618d61f1bbbc79d20358f919ade8f60037ea5da775e4b554d2
+TERMUX_PKG_AUTO_UPDATE=true
 TERMUX_PKG_BUILD_IN_SRC=true
 TERMUX_PKG_AUTO_UPDATE=true
 

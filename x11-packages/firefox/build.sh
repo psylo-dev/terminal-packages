@@ -2,9 +2,10 @@ TERMUX_PKG_HOMEPAGE=https://www.mozilla.org/firefox
 TERMUX_PKG_DESCRIPTION="Mozilla Firefox web browser"
 TERMUX_PKG_LICENSE="MPL-2.0"
 TERMUX_PKG_MAINTAINER="@termux"
-TERMUX_PKG_VERSION="118.0.1"
+TERMUX_PKG_VERSION="119.0.1"
+TERMUX_PKG_REVISION=1
 TERMUX_PKG_SRCURL=https://ftp.mozilla.org/pub/firefox/releases/${TERMUX_PKG_VERSION}/source/firefox-${TERMUX_PKG_VERSION}.source.tar.xz
-TERMUX_PKG_SHA256=a3f4da56d13605d615a740c739e3504261649d040bc473ae2ed609336d79fd95
+TERMUX_PKG_SHA256=48cc43cab060e97467e9a17617f511a177e7b91b7e77e408425351a2cbb07f70
 # ffmpeg and pulseaudio are dependencies through dlopen(3):
 TERMUX_PKG_DEPENDS="ffmpeg, fontconfig, freetype, gdk-pixbuf, glib, gtk3, libandroid-shmem, libc++, libcairo, libevent, libffi, libice, libicu, libjpeg-turbo, libnspr, libnss, libpixman, libsm, libvpx, libwebp, libx11, libxcb, libxcomposite, libxdamage, libxext, libxfixes, libxrandr, libxtst, pango, pulseaudio, zlib"
 TERMUX_PKG_BUILD_DEPENDS="libcpufeatures, libice, libsm"
@@ -58,8 +59,7 @@ termux_step_pre_configure() {
 	# Out of memory when building gkrust
 	# CI shows (signal: 9, SIGKILL: kill)
 	case "${TERMUX_ARCH}" in
-	aarch64) RUSTFLAGS+=" -C debuginfo=0" ;;
-	arm) RUSTFLAGS+=" -C debuginfo=0" ;;
+	aarch64|arm|i686|x86_64) RUSTFLAGS+=" -C debuginfo=1" ;;
 	esac
 
 	cargo install cbindgen
@@ -69,7 +69,8 @@ termux_step_pre_configure() {
 	export HOST_CC=$(command -v clang)
 	export HOST_CXX=$(command -v clang++)
 
-	CXXFLAGS+=" -U__ANDROID__"
+	# https://reviews.llvm.org/D141184
+	CXXFLAGS+=" -U__ANDROID__ -D_LIBCPP_HAS_NO_C11_ALIGNED_ALLOC"
 	LDFLAGS+=" -landroid-shmem -llog"
 }
 
@@ -113,4 +114,12 @@ termux_step_configure() {
 
 termux_step_post_make_install() {
 	install -Dm644 -t "${TERMUX_PREFIX}/share/applications" "${TERMUX_PKG_BUILDER_DIR}/firefox.desktop"
+
+	# https://github.com/termux/termux-packages/issues/18429
+	# https://phabricator.services.mozilla.com/D181687
+	# Android 8.x and older not support "-z pack-relative-relocs" / DT_RELR
+	local r=$("${READELF}" -d "${TERMUX_PREFIX}/bin/firefox")
+	if [[ -n "$(echo "${r}" | grep "(RELR)")" ]]; then
+		termux_error_exit "DT_RELR is unsupported on Android 8.x and older\n${r}"
+	fi
 }
