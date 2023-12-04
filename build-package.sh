@@ -84,6 +84,10 @@ source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_cargo_c.sh"
 # shellcheck source=scripts/build/setup/termux_setup_crystal.sh
 source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_crystal.sh"
 
+# Utility function for setting up Flang toolchain.
+# shellcheck source=scripts/build/setup/termux_setup_flang.sh
+source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_flang.sh"
+
 # Utility function for setting up GHC toolchain.
 # shellcheck source=scripts/build/setup/termux_setup_ghc.sh
 source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_ghc.sh"
@@ -128,6 +132,10 @@ source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_rust.sh"
 # Utility function for swift-using packages to setup a swift toolchain
 # shellcheck source=scripts/build/setup/termux_setup_swift.sh
 source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_swift.sh"
+
+# Utility function to setup a current xmake build system.
+# shellcheck source=scripts/build/setup/termux_setup_xmake.sh
+source "$TERMUX_SCRIPTDIR/scripts/build/setup/termux_setup_xmake.sh"
 
 # Utility function for zig-using packages to setup a zig toolchain.
 # shellcheck source=scripts/build/setup/termux_setup_zig.sh
