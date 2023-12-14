@@ -3,6 +3,7 @@ TERMUX_PKG_DESCRIPTION="Java development kit and runtime"
 TERMUX_PKG_LICENSE="GPL-2.0"
 TERMUX_PKG_MAINTAINER="@termux"
 TERMUX_PKG_VERSION=21.0.1
+TERMUX_PKG_REVISION=1
 TERMUX_PKG_SRCURL=https://github.com/itsaky/openjdk-21-android/archive/refs/tags/jdk-21.0.1-ga-android.tar.gz
 TERMUX_PKG_SHA256=0c115c91adcced47342e436c47e8eabbae82e252b5f531f859ce01f375c98f30
 TERMUX_PKG_DEPENDS="libiconv, libjpeg-turbo, zlib, libandroid-spawn"
