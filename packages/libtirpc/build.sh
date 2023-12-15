@@ -16,4 +16,6 @@ termux_step_pre_configure() {
 	aclocal
 	automake
 	autoconf
+
+	CFLAGS+=" -Wl,--undefined-version"
 }
