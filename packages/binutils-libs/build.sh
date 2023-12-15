@@ -49,6 +49,7 @@ termux_step_pre_configure() {
 	rm -rf $TERMUX_HOSTBUILD_MARKER
 
 	export CPPFLAGS="$CPPFLAGS -Wno-c++11-narrowing"
+	export LDFLAGS="$LDFLAGS -Wl,--undefined-version"
 
 	if [ $TERMUX_ARCH_BITS = 32 ]; then
 		export LIB_PATH="${TERMUX_PREFIX}/lib:/system/lib"
