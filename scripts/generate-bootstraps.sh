@@ -478,6 +478,8 @@ for package_arch in "${TERMUX_ARCHITECTURES[@]}"; do
 
 	# Necessary packages for AndroidIDE
 	pull_package androidide-tools
+	pull_package which
+	pull_package file
 
 	# Error in AndroidIDE if these are not included
 	pull_package brotli
