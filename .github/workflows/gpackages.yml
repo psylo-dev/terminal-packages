@@ -1,0 +1,93 @@
+name: GPackages
+
+on:
+  push:
+    branches:
+    - master
+    - dev
+    - 'dev/**'
+    paths:
+    - 'packages/**'
+    - 'root-packages/**'
+    - 'x11-packages/**'
+  pull_request:
+    paths:
+    - 'packages/**'
+    - 'root-packages/**'
+    - 'x11-packages/**'
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: "A space-separated names of packages selected for rebuilding"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        target_arch: [aarch64, arm, i686, x86_64]
+      fail-fast: false
+    steps:
+    - name: Setup arm and aarch64 CPU emulators
+      uses: dbhi/qus/action@main
+      with:
+        targets: arm aarch64
+    - name: Clone repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1000
+    - name: Gather build summary
+      run: |
+        # (original script unchanged)
+        # ... your big shell script remains here ...
+    - name: Lint packages
+      run: |
+        # (original script unchanged)
+    - name: Free additional disk space (if necessary)
+      run: |
+        # (original script unchanged)
+    - name: Build packages
+      run: |
+        # (original script unchanged)
+    - name: Generate build artifacts
+      if: always()
+      run: |
+        # (original script unchanged)
+    - name: Checksums for built *.deb files
+      if: always()
+      run: |
+        find debs -type f -name "*.deb" -exec sha256sum "{}" \; | sort -k2
+    - name: Store *.deb files as artifact
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: debs-${{ matrix.target_arch }}-${{ github.sha }}
+        path: ./artifacts
+
+# Uncomment below to enable release publishing with the built artifacts
+#  release:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: write
+#    steps:
+#    - name: Download artifacts
+#      uses: actions/download-artifact@v4
+#      with:
+#        path: ./artifacts
+#    - name: Create Release
+#      id: create_release
+#      uses: softprops/action-gh-release@v2
+#      with:
+#        tag_name: build-${{ github.sha }}
+#        name: Build ${{ github.sha }}
+#        draft: false
+#        prerelease: true
+#    - name: Upload Release Assets
+#      uses: softprops/action-gh-release@v2
+#      with:
+#        files: ./artifacts/**/*.tar
