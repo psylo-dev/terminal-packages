@@ -1,6 +1,6 @@
-TERMUX_SUBPKG_DESCRIPTION="Rust documentation"
+TERMUX_SUBPKG_DESCRIPTION="Rust std for target wasm32-wasip1"
 TERMUX_SUBPKG_DEPEND_ON_PARENT=false
 TERMUX_SUBPKG_PLATFORM_INDEPENDENT=true
 TERMUX_SUBPKG_INCLUDE="
-share/doc/rust/html
+lib/rustlib/wasm32-wasip1
 "
